@@ -10,17 +10,17 @@
   <meta name="description" content="预备知识 数学知识 树的广度优先遍历  问题你现在手里有一份大小为 N x N 的『地图』（网格） grid，上面的每个『区域』（单元格）都用 0 和 1 标记好了。其中 0 代表海洋，1 代表陆地，你知道距离陆地区域最远的海洋区域是是哪一个吗？请返回该海洋区域到离它最近的陆地区域的距离。 我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：(x0, y0) 和 (x1,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="地图分析">
-<meta property="og:url" content="http://yoursite.com/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="预备知识 数学知识 树的广度优先遍历  问题你现在手里有一份大小为 N x N 的『地图』（网格） grid，上面的每个『区域』（单元格）都用 0 和 1 标记好了。其中 0 代表海洋，1 代表陆地，你知道距离陆地区域最远的海洋区域是是哪一个吗？请返回该海洋区域到离它最近的陆地区域的距离。 我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：(x0, y0) 和 (x1,">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg">
-<meta property="og:image" content="http://yoursite.com/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg">
+<meta property="og:image" content="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png">
 <meta property="article:published_time" content="2020-03-29T13:33:12.000Z">
-<meta property="article:modified_time" content="2020-03-29T13:57:37.909Z">
+<meta property="article:modified_time" content="2020-03-29T14:26:42.478Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -69,9 +69,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2020-3-20-地图分析" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2020-3-29-地图分析" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" class="article-date">
+    <a href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" class="article-date">
   <time datetime="2020-03-29T13:33:12.000Z" itemprop="datePublished">2020-03-29</time>
 </a>
     
@@ -99,11 +99,11 @@
 <p>我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：(x0, y0) 和 (x1, y1) 这两个区域之间的距离是 |x0 - x1| + |y0 - y1| 。</p>
 <p>如果我们的地图上只有陆地或者海洋，请返回 -1。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：  </p>
-<p><img src="./image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg" alt="地图分析1"></p>
+<p><img src="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg" alt="地图分析1"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,0,1],[0,0,0],[1,0,1]]</span><br><span class="line">输出：2</span><br><span class="line">解释： </span><br><span class="line">海洋区域 (1, 1) 和所有陆地区域之间的距离都达到最大，最大距离为 2。</span><br></pre></td></tr></table></figure>
 
 <p>示例 2：  </p>
-<p><img src="./image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png" alt="地图分析1"></p>
+<p><img src="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png" alt="地图分析2"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,0,0],[0,0,0],[0,0,0]]</span><br><span class="line">输出：4</span><br><span class="line">解释： </span><br><span class="line">海洋区域 (2, 2) 和所有陆地区域之间的距离都达到最大，最大距离为 4。</span><br></pre></td></tr></table></figure>
 
 <h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static int maxDistance(int[][] grid)&#123;</span><br><span class="line">    int[] dx &#x3D; &#123;-1,0,1,0&#125;;</span><br><span class="line">    int[] dy &#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line"></span><br><span class="line">    Queue&lt;int[]&gt; queue &#x3D; new ArrayDeque&lt;&gt;();</span><br><span class="line">    int m &#x3D; grid.length;</span><br><span class="line">    int n &#x3D; grid[0].length;</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;i++)&#123;&#x2F;&#x2F;将陆地加入</span><br><span class="line">        for (int j&#x3D;0;j&lt;n;j++) &#123;</span><br><span class="line">            if (grid[i][j] !&#x3D; 0) &#123;</span><br><span class="line">                queue.add(new int[]&#123;i, j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;queue.size&#x3D;&quot; + queue.size());</span><br><span class="line">    boolean hasOcean &#x3D; false;</span><br><span class="line">    int point[] &#x3D; null;</span><br><span class="line">    while (!queue.isEmpty())&#123;</span><br><span class="line">        point &#x3D; queue.poll();</span><br><span class="line">        int x &#x3D; point[0];</span><br><span class="line">        int y &#x3D; point[1];</span><br><span class="line">        for (int i&#x3D;0;i&lt;4;i++)&#123;</span><br><span class="line">            int newX &#x3D; x + dx[i];</span><br><span class="line">            int newY &#x3D; y + dy[i];</span><br><span class="line">            if (newX &lt; 0 || newX &gt;&#x3D; m || newY &lt; 0 || newY &gt;&#x3D; n || grid[newX][newY] !&#x3D; 0) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            grid[newX][newY] &#x3D; grid[x][y]+1;</span><br><span class="line">            hasOcean &#x3D; true;</span><br><span class="line">            queue.offer(new int[]&#123;newX, newY&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i&#x3D;0;i&lt;3;i++)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;3;j++)&#123;</span><br><span class="line">            System.out.print(grid[i][i]+&quot;+&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">    if (!hasOcean || point&#x3D;&#x3D;null)</span><br><span class="line">        return -1;</span><br><span class="line">    return grid[point[0]][point[1]]-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -114,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" data-id="ck8d3z3fz0000bos97nb039rd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" data-id="ck8d4o9n20000nws9ci6r7nik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -122,6 +122,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          圆圈中最后剩下的数字
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/28/2020-3-28-%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
@@ -163,7 +172,15 @@
       <ul>
         
           <li>
-            <a href="/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
+            <a href="/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/">排序问题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/">圆圈中最后剩下的数字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
           </li>
         
           <li>
@@ -172,14 +189,6 @@
         
           <li>
             <a href="/2020/03/27/2020-3-27-%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/">卡牌分组</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/26/2020-3-26-%E8%BD%A6%E7%9A%84%E5%8F%AF%E7%94%A8%E6%8D%95%E8%8E%B7%E9%87%8F/">车的可用捕获量</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/25/2020-3-25-%E4%B8%89%E7%BB%B4%E5%BD%A2%E4%BD%93%E7%9A%84%E8%A1%A8%E9%9D%A2%E7%A7%AF/">三维形体的表面积</a>
           </li>
         
       </ul>

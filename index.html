@@ -64,9 +64,113 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2020-3-20-地图分析" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2020-3-31-排序问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" class="article-date">
+    <a href="/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-03-31T12:12:32.000Z" itemprop="datePublished">2020-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/">排序问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>经典排序算法</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给你一个整数数组 nums，请你将该数组升序排列。</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>经典排序算法<br><img src="/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png" alt="排序算法"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/" data-id="ck8fxgxq70000aws9dy8vhigk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-3-30-圆圈中最后剩下的数字" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-date">
+  <time datetime="2020-03-31T12:11:19.000Z" itemprop="datePublished">2020-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/">圆圈中最后剩下的数字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>数学知识（约瑟夫环问题）</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>0,1,,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
+<p>例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: n &#x3D; 5, m &#x3D; 3</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: n &#x3D; 10, m &#x3D; 17</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public int lastRemaining(int n, int m) &#123;</span><br><span class="line">    int ans &#x3D; 0;</span><br><span class="line">    for (int i&#x3D;2;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">        ans &#x3D; (ans+m)%i;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>第一轮是 [0, 1, 2, 3, 4] ，所以是 [0, 1, 2, 3, 4] 这个数组的多个复制。这一轮 2 删除了。</p>
+<p>第二轮开始时，从 3 开始，所以是 [3, 4, 0, 1] 这个数组的多个复制。这一轮 0 删除了。</p>
+<p>第三轮开始时，从 1 开始，所以是 [1, 3, 4] 这个数组的多个复制。这一轮 4 删除了。</p>
+<p>第四轮开始时，还是从 1 开始，所以是 [1, 3] 这个数组的多个复制。这一轮 1 删除了。</p>
+<p>最后剩下的数字是 3。</p>
+<p>图中的绿色的线指的是新的一轮的开头是怎么指定的，每次都是固定地向前移位 mm 个位置。</p>
+<p>然后我们从最后剩下的 3 倒着看，我们可以反向推出这个数字在之前每个轮次的位置。</p>
+<p>最后剩下的 3 的下标是 0。</p>
+<p>第四轮反推，补上 mm 个位置，然后模上当时的数组大小 22，位置是(0 + 3) % 2 = 1。</p>
+<p>第三轮反推，补上 mm 个位置，然后模上当时的数组大小 33，位置是(1 + 3) % 3 = 1。</p>
+<p>第二轮反推，补上 mm 个位置，然后模上当时的数组大小 44，位置是(1 + 3) % 4 = 0。</p>
+<p>第一轮反推，补上 mm 个位置，然后模上当时的数组大小 55，位置是(0 + 3) % 5 = 3。</p>
+<p>所以最终剩下的数字的下标就是3。因为数组是从0开始的，所以最终的答案就是3。</p>
+<p>总结一下反推的过程，就是 (当前index + m) % 上一轮剩余数字的个数。</p>
+<p>原文链接：<a href="https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/" data-id="ck8fxgxqd0001aws9h0bn6bhd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-3-29-地图分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" class="article-date">
   <time datetime="2020-03-29T13:33:12.000Z" itemprop="datePublished">2020-03-29</time>
 </a>
     
@@ -78,7 +182,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
+      <a class="article-title" href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
     </h1>
   
 
@@ -94,11 +198,11 @@
 <p>我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：(x0, y0) 和 (x1, y1) 这两个区域之间的距离是 |x0 - x1| + |y0 - y1| 。</p>
 <p>如果我们的地图上只有陆地或者海洋，请返回 -1。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：  </p>
-<p><img src="./image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg" alt="地图分析1"></p>
+<p><img src="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg" alt="地图分析1"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,0,1],[0,0,0],[1,0,1]]</span><br><span class="line">输出：2</span><br><span class="line">解释： </span><br><span class="line">海洋区域 (1, 1) 和所有陆地区域之间的距离都达到最大，最大距离为 2。</span><br></pre></td></tr></table></figure>
 
 <p>示例 2：  </p>
-<p><img src="./image/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png" alt="地图分析1"></p>
+<p><img src="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png" alt="地图分析2"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,0,0],[0,0,0],[0,0,0]]</span><br><span class="line">输出：4</span><br><span class="line">解释： </span><br><span class="line">海洋区域 (2, 2) 和所有陆地区域之间的距离都达到最大，最大距离为 4。</span><br></pre></td></tr></table></figure>
 
 <h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static int maxDistance(int[][] grid)&#123;</span><br><span class="line">    int[] dx &#x3D; &#123;-1,0,1,0&#125;;</span><br><span class="line">    int[] dy &#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line"></span><br><span class="line">    Queue&lt;int[]&gt; queue &#x3D; new ArrayDeque&lt;&gt;();</span><br><span class="line">    int m &#x3D; grid.length;</span><br><span class="line">    int n &#x3D; grid[0].length;</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;i++)&#123;&#x2F;&#x2F;将陆地加入</span><br><span class="line">        for (int j&#x3D;0;j&lt;n;j++) &#123;</span><br><span class="line">            if (grid[i][j] !&#x3D; 0) &#123;</span><br><span class="line">                queue.add(new int[]&#123;i, j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;queue.size&#x3D;&quot; + queue.size());</span><br><span class="line">    boolean hasOcean &#x3D; false;</span><br><span class="line">    int point[] &#x3D; null;</span><br><span class="line">    while (!queue.isEmpty())&#123;</span><br><span class="line">        point &#x3D; queue.poll();</span><br><span class="line">        int x &#x3D; point[0];</span><br><span class="line">        int y &#x3D; point[1];</span><br><span class="line">        for (int i&#x3D;0;i&lt;4;i++)&#123;</span><br><span class="line">            int newX &#x3D; x + dx[i];</span><br><span class="line">            int newY &#x3D; y + dy[i];</span><br><span class="line">            if (newX &lt; 0 || newX &gt;&#x3D; m || newY &lt; 0 || newY &gt;&#x3D; n || grid[newX][newY] !&#x3D; 0) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            grid[newX][newY] &#x3D; grid[x][y]+1;</span><br><span class="line">            hasOcean &#x3D; true;</span><br><span class="line">            queue.offer(new int[]&#123;newX, newY&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i&#x3D;0;i&lt;3;i++)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;3;j++)&#123;</span><br><span class="line">            System.out.print(grid[i][i]+&quot;+&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">    if (!hasOcean || point&#x3D;&#x3D;null)</span><br><span class="line">        return -1;</span><br><span class="line">    return grid[point[0]][point[1]]-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -109,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" data-id="ck8d3z3fz0000bos97nb039rd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" data-id="ck8d4o9n20000nws9ci6r7nik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -461,101 +565,6 @@
 
 
   
-    <article id="post-2020-3-18-矩阵重叠" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/18/2020-3-18-%E7%9F%A9%E9%98%B5%E9%87%8D%E5%8F%A0/" class="article-date">
-  <time datetime="2020-03-18T14:53:52.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/2020-3-18-%E7%9F%A9%E9%98%B5%E9%87%8D%E5%8F%A0/">矩阵重叠</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><p>平面直角坐标系</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>矩形以列表 [x1, y1, x2, y2] 的形式表示，其中 (x1, y1) 为左下角的坐标，(x2, y2) 是右上角的坐标。<br>如果相交的面积为正，则称两矩形重叠。需要明确的是，只在角或边接触的两个矩形不构成重叠。<br>给出两个矩形，判断它们是否重叠并返回结果。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：rec1 &#x3D; [0,0,2,2], rec2 &#x3D; [1,1,3,3]</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：rec1 &#x3D; [0,0,1,1], rec2 &#x3D; [1,0,2,1]</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isRectangleOverlap(int[] rec1, int[] rec2) &#123;</span><br><span class="line">    if (rec2[2]&lt;&#x3D;rec1[0] || rec2[1]&gt;&#x3D;rec1[3] || rec2[0]&gt;&#x3D;rec1[2] || rec2[3]&lt;&#x3D;rec1[1])</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>反向考虑矩阵在什么条件下不重叠，例如数学知识简单判断后发现另一个矩阵B在矩阵A的左侧、右侧、上侧、下侧不重叠，在进行简单的逻辑判断即可</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>注意反向思维</p>
-<p>原文链接：<a href="https://leetcode-cn.com/problems/rectangle-overlap/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rectangle-overlap/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/18/2020-3-18-%E7%9F%A9%E9%98%B5%E9%87%8D%E5%8F%A0/" data-id="ck7xgchic0000v0s9e6v395bi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2020-3-16-字符串压缩" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/16/2020-3-16-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/" class="article-date">
-  <time datetime="2020-03-16T12:54:18.000Z" itemprop="datePublished">2020-03-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/16/2020-3-16-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/">字符串压缩</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><p>无</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b1c5a3。若“压缩”后的字符串没有变短，则返回原先的字符串。你可以假设字符串中只包含大小写英文字母（a至z）。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;aabcccccaaa&quot;</span><br><span class="line">输出：&quot;a2b1c5a3&quot;</span><br></pre></td></tr></table></figure>
-<p>示例2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;abbccd&quot;</span><br><span class="line">输出：&quot;abbccd&quot;</span><br><span class="line">解释：&quot;abbccd&quot;压缩后为&quot;a1b2c2d1&quot;，比原字符串长度更长。</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static String compressString(String S) &#123;</span><br><span class="line">    StringBuilder sb &#x3D; new StringBuilder();</span><br><span class="line">    int N &#x3D; S.length();</span><br><span class="line">    int i&#x3D;0,j &#x3D; 0;</span><br><span class="line">    while (i&lt;N)&#123;</span><br><span class="line">        while (j&lt;N &amp;&amp; S.charAt(j)&#x3D;&#x3D;S.charAt(i))&#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(S.charAt(i));</span><br><span class="line">        sb.append(j - i);</span><br><span class="line">        i&#x3D;j;</span><br><span class="line">    &#125;</span><br><span class="line">    String temp &#x3D; sb.toString();</span><br><span class="line">    return S.length()&gt;temp.length()?temp:S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>从左向右遍历数组，计算相同字符数即可</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此算法虽然简答，但要注意用StringBuilder类，尽量不要使用String进行字符的append，String会增加执行用时。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/16/2020-3-16-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/" data-id="ck7uh6n0j0000pcs9djk7egzz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -592,7 +601,15 @@
       <ul>
         
           <li>
-            <a href="/2020/03/29/2020-3-20-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
+            <a href="/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/">排序问题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/">圆圈中最后剩下的数字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
           </li>
         
           <li>
@@ -601,14 +618,6 @@
         
           <li>
             <a href="/2020/03/27/2020-3-27-%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/">卡牌分组</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/26/2020-3-26-%E8%BD%A6%E7%9A%84%E5%8F%AF%E7%94%A8%E6%8D%95%E8%8E%B7%E9%87%8F/">车的可用捕获量</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/25/2020-3-25-%E4%B8%89%E7%BB%B4%E5%BD%A2%E4%BD%93%E7%9A%84%E8%A1%A8%E9%9D%A2%E7%A7%AF/">三维形体的表面积</a>
           </li>
         
       </ul>
