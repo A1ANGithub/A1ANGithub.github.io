@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>编辑距离 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="预备知识 动态规划  问题给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符删除一个字符替换一个字符   示例示例 1： 123456输入：word1 &#x3D; &quot;horse&quot;, word2 &#x3D; &quot;ros&quot;输出：3解释：horse -&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编辑距离">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/2020-4-6-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="预备知识 动态规划  问题给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符删除一个字符替换一个字符   示例示例 1： 123456输入：word1 &#x3D; &quot;horse&quot;, word2 &#x3D; &quot;ros&quot;输出：3解释：horse -&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-07T05:05:39.000Z">
+<meta property="article:modified_time" content="2020-04-07T05:17:18.498Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-4-6-编辑距离" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/07/2020-4-6-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/" class="article-date">
+  <time datetime="2020-04-07T05:05:39.000Z" itemprop="datePublished">2020-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编辑距离
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>动态规划</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。</p>
+<p>你可以对一个单词进行如下三种操作：</p>
+<p>插入一个字符<br>删除一个字符<br>替换一个字符  </p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：word1 &#x3D; &quot;horse&quot;, word2 &#x3D; &quot;ros&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">horse -&gt; rorse (将 &#39;h&#39; 替换为 &#39;r&#39;)</span><br><span class="line">rorse -&gt; rose (删除 &#39;r&#39;)</span><br><span class="line">rose -&gt; ros (删除 &#39;e&#39;)</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：word1 &#x3D; &quot;intention&quot;, word2 &#x3D; &quot;execution&quot;</span><br><span class="line">输出：5</span><br><span class="line">解释：</span><br><span class="line">intention -&gt; inention (删除 &#39;t&#39;)</span><br><span class="line">inention -&gt; enention (将 &#39;i&#39; 替换为 &#39;e&#39;)</span><br><span class="line">enention -&gt; exention (将 &#39;n&#39; 替换为 &#39;x&#39;)</span><br><span class="line">exention -&gt; exection (将 &#39;n&#39; 替换为 &#39;c&#39;)</span><br><span class="line">exection -&gt; execution (插入 &#39;u&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public static int minDistance(String word1, String word2)&#123;</span><br><span class="line">    int n &#x3D; word1.length();</span><br><span class="line">    int m &#x3D; word2.length();</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 有一个字符串为空串</span><br><span class="line">    if (n * m &#x3D;&#x3D; 0)</span><br><span class="line">        return n + m;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; DP 数组</span><br><span class="line">    int [][] D &#x3D; new int[n + 1][m + 1];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 边界状态初始化</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n + 1; i++) &#123;</span><br><span class="line">        D[i][0] &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int j &#x3D; 0; j &lt; m + 1; j++) &#123;</span><br><span class="line">        D[0][j] &#x3D; j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 计算所有 DP 值</span><br><span class="line">    for (int i &#x3D; 1; i &lt; n + 1; i++) &#123;</span><br><span class="line">        for (int j &#x3D; 1; j &lt; m + 1; j++) &#123;</span><br><span class="line">            int left &#x3D; D[i - 1][j] + 1;</span><br><span class="line">            int down &#x3D; D[i][j - 1] + 1;</span><br><span class="line">            int left_down &#x3D; D[i - 1][j - 1];</span><br><span class="line">            if (word1.charAt(i - 1) !&#x3D; word2.charAt(j - 1))</span><br><span class="line">                left_down +&#x3D; 1;</span><br><span class="line">            D[i][j] &#x3D; Math.min(left, Math.min(down, left_down));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return D[n][m];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>动态规划，设单词A、B，则单词A转换为B和单词B转换为A所用的最少操作数是一样的。dp[i][j]表示word1的前i个字母转换成word2的前j个字母所使用的最少操作。i指向word1，j指向word2。<br>若当前字母相同，则dp[i][j] = dp[i - 1][j - 1];<br>否则取增删替三个操作的最小值 + 1， 即:<br>dp[i][j] = min(dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1]) + 1</p>
+<p>原文链接：<a href="https://leetcode-cn.com/problems/edit-distance/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/edit-distance/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/07/2020-4-6-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/" data-id="ck8pgcmih00003ws92xykd6i7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/04/2020-4-4-%E6%8E%A5%E9%9B%A8%E6%B0%B4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">接雨水</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/07/2020-4-6-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">编辑距离</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/04/2020-4-4-%E6%8E%A5%E9%9B%A8%E6%B0%B4/">接雨水</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/03/2020-4-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0/">字符串转换整数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/02/2020-4-2-%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/">生命游戏</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/31/2020-3-31-%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/">排序问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
