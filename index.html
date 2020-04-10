@@ -64,6 +64,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2020-4-10-翻转字符串里的单词" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/10/2020-4-10-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" class="article-date">
+  <time datetime="2020-04-10T13:58:07.000Z" itemprop="datePublished">2020-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/2020-4-10-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">翻转字符串里的单词</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><p>语言中字符串自带的方法</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给定一个字符串，逐个翻转字符串中的每个单词。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;the sky is blue&quot;</span><br><span class="line">输出: &quot;blue is sky the&quot;</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;  hello world!  &quot;</span><br><span class="line">输出: &quot;world! hello&quot;</span><br><span class="line">解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;a good   example&quot;</span><br><span class="line">输出: &quot;example good a&quot;</span><br><span class="line">解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>无空格字符构成一个单词。</li>
+<li>输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</li>
+<li>如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</li>
+</ul>
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def reverseWords(self, s: str) -&gt; str:</span><br><span class="line">        return &quot; &quot;.join(reversed(s.split()))</span><br></pre></td></tr></table></figure>
+
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>使用语言自带方法即可</p>
+<p>原文链接：<a href="https://leetcode-cn.com/problems/reverse-words-in-a-string/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-words-in-a-string/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/10/2020-4-10-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" data-id="ck8uacqkl0000a4s9c1yfaljg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-4-8-机器人的运动范围" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/08/%C2%962020-4-8-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" class="article-date">
@@ -526,56 +580,6 @@
 
 
   
-    <article id="post-2020-3-28-单词的压缩编码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/28/2020-3-28-%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/" class="article-date">
-  <time datetime="2020-03-28T13:30:40.000Z" itemprop="datePublished">2020-03-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/28/2020-3-28-%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/">单词的压缩编码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ol>
-<li>无</li>
-<li>Trie字典树</li>
-</ol>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给定一个单词列表，我们将这个列表编码成一个索引字符串 S 与一个索引列表 A。</p>
-<p>例如，如果这个列表是 [“time”, “me”, “bell”]，我们就可以将其表示为 S = “time#bell#” 和 indexes = [0, 2, 5]。</p>
-<p>对于每一个索引，我们可以通过从字符串 S 中索引的位置开始读取字符串，直到 “#” 结束，来恢复我们之前的单词列表。</p>
-<p>那么成功对给定单词列表进行编码的最小字符串长度是多少呢？</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: words &#x3D; [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;]</span><br><span class="line">输出: 10</span><br><span class="line">说明: S &#x3D; &quot;time#bell#&quot; ， indexes &#x3D; [0, 2, 5] 。</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static int minimumLengthEncoding(String[] words) &#123;</span><br><span class="line">    int count&#x3D;0;</span><br><span class="line">    for (int i&#x3D;0;i&lt;words.length;i++)&#123;</span><br><span class="line">        count +&#x3D; words[i].length() + 1;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;count&#x3D;&quot; + count);</span><br><span class="line">    for (int i&#x3D;0;i&lt;words.length;i++)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;words.length;j++)&#123;</span><br><span class="line">            if (i&#x3D;&#x3D;j)</span><br><span class="line">                continue;</span><br><span class="line">            if (words[i].length()&lt;words[j].length() &amp;&amp; words[j].substring(words[j].length()-words[i].length()).equals(words[i]))&#123;</span><br><span class="line">                count -&#x3D; words[i].length() + 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (words[i].length()&#x3D;&#x3D;words[j].length() &amp;&amp; j&gt;i &amp;&amp; words[i].equals(words[j]))&#123;</span><br><span class="line">                count -&#x3D; words[i].length() + 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;第&quot; + i + &quot;count&#x3D;&quot; + count);</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这是自己想出来的算法，时间复杂度比字典树较高。但相对与字典树好理解。首先遍历数组，计算出未压缩前的count总数，并加上#的长度。再遍历数组，当遍历到第i个时，再遍历数组，依次匹配是否存在字符串（长度大于words[i].length）可以容纳这个words[i]，若容纳，则减去words[i].length+1。同时为了防止相同字符串相互替换，当字符串遍历时相等时，只有后面第一个出现的字符串才能替换它。最后返回count。<br>还有一种方法，使用Trie字典树，在原文中最好看一下</p>
-<p>原文链接：<a href="https://leetcode-cn.com/problems/short-encoding-of-words/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/short-encoding-of-words/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/28/2020-3-28-%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/" data-id="ck8bnyjzt0000xss95v3lewba" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -612,6 +616,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/10/2020-4-10-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">翻转字符串里的单词</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/08/%C2%962020-4-8-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/">机器人的运动范围</a>
           </li>
         
@@ -625,10 +633,6 @@
         
           <li>
             <a href="/2020/04/04/2020-4-4-%E6%8E%A5%E9%9B%A8%E6%B0%B4/">接雨水</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/03/2020-4-3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0/">字符串转换整数</a>
           </li>
         
       </ul>
