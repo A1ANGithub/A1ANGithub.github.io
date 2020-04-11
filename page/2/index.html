@@ -64,6 +64,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2020-3-29-地图分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2020-03-29T13:33:12.000Z" itemprop="datePublished">2020-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/">地图分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>数学知识</li>
+<li>树的广度优先遍历</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>你现在手里有一份大小为 N x N 的『地图』（网格） grid，上面的每个『区域』（单元格）都用 0 和 1 标记好了。其中 0 代表海洋，1 代表陆地，你知道距离陆地区域最远的海洋区域是是哪一个吗？请返回该海洋区域到离它最近的陆地区域的距离。</p>
+<p>我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：(x0, y0) 和 (x1, y1) 这两个区域之间的距离是 |x0 - x1| + |y0 - y1| 。</p>
+<p>如果我们的地图上只有陆地或者海洋，请返回 -1。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：  </p>
+<p><img src="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%901.jpeg" alt="地图分析1"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,0,1],[0,0,0],[1,0,1]]</span><br><span class="line">输出：2</span><br><span class="line">解释： </span><br><span class="line">海洋区域 (1, 1) 和所有陆地区域之间的距离都达到最大，最大距离为 2。</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：  </p>
+<p><img src="/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90%5C%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%902.png" alt="地图分析2"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,0,0],[0,0,0],[0,0,0]]</span><br><span class="line">输出：4</span><br><span class="line">解释： </span><br><span class="line">海洋区域 (2, 2) 和所有陆地区域之间的距离都达到最大，最大距离为 4。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static int maxDistance(int[][] grid)&#123;</span><br><span class="line">    int[] dx &#x3D; &#123;-1,0,1,0&#125;;</span><br><span class="line">    int[] dy &#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line"></span><br><span class="line">    Queue&lt;int[]&gt; queue &#x3D; new ArrayDeque&lt;&gt;();</span><br><span class="line">    int m &#x3D; grid.length;</span><br><span class="line">    int n &#x3D; grid[0].length;</span><br><span class="line">    for (int i&#x3D;0;i&lt;m;i++)&#123;&#x2F;&#x2F;将陆地加入</span><br><span class="line">        for (int j&#x3D;0;j&lt;n;j++) &#123;</span><br><span class="line">            if (grid[i][j] !&#x3D; 0) &#123;</span><br><span class="line">                queue.add(new int[]&#123;i, j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;queue.size&#x3D;&quot; + queue.size());</span><br><span class="line">    boolean hasOcean &#x3D; false;</span><br><span class="line">    int point[] &#x3D; null;</span><br><span class="line">    while (!queue.isEmpty())&#123;</span><br><span class="line">        point &#x3D; queue.poll();</span><br><span class="line">        int x &#x3D; point[0];</span><br><span class="line">        int y &#x3D; point[1];</span><br><span class="line">        for (int i&#x3D;0;i&lt;4;i++)&#123;</span><br><span class="line">            int newX &#x3D; x + dx[i];</span><br><span class="line">            int newY &#x3D; y + dy[i];</span><br><span class="line">            if (newX &lt; 0 || newX &gt;&#x3D; m || newY &lt; 0 || newY &gt;&#x3D; n || grid[newX][newY] !&#x3D; 0) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            grid[newX][newY] &#x3D; grid[x][y]+1;</span><br><span class="line">            hasOcean &#x3D; true;</span><br><span class="line">            queue.offer(new int[]&#123;newX, newY&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i&#x3D;0;i&lt;3;i++)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;3;j++)&#123;</span><br><span class="line">            System.out.print(grid[i][i]+&quot;+&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">    if (!hasOcean || point&#x3D;&#x3D;null)</span><br><span class="line">        return -1;</span><br><span class="line">    return grid[point[0]][point[1]]-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>问题分析，就是寻找那个海洋去陆地（离他最近的）最远，反过来考虑，就是哪个陆地能够直接的走到最远的海洋。使用Tree的广度优先遍历。模拟一个超级源点，各个陆地为第一层广度优先遍历的结果，将陆地加入队列中，接下来按照该节点(grid[i][j])的上下左右遍历，若遇到为遍历过的海洋则将该海洋节点值赋为该节点值(grid[i][j])+1。队列为空时，遍历结束。最后返回最后遍历到的海洋值-1（因为陆地被赋值为1）。<br>还有一种只需要基本的数学知识的方法，遍历数组，求出每一个海洋最近的大陆的曼哈顿距离，最后返回其中的最大值</p>
+<p>原文链接：<a href="https://leetcode-cn.com/problems/as-far-from-land-as-possible/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/as-far-from-land-as-possible/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/29/2020-3-29-%E5%9C%B0%E5%9B%BE%E5%88%86%E6%9E%90/" data-id="ck8d4o9n20000nws9ci6r7nik" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-3-28-单词的压缩编码" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/28/2020-3-28-%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8E%8B%E7%BC%A9%E7%BC%96%E7%A0%81/" class="article-date">
@@ -497,56 +552,6 @@
 
 
   
-    <article id="post-2020-3-12-字符串的最大公因子" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/12/2020-3-12-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/" class="article-date">
-  <time datetime="2020-03-12T15:10:08.000Z" itemprop="datePublished">2020-03-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/2020-3-12-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/">字符串的最大公因子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
-<li>约数，最大公约数</li>
-<li>辗转相除法<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2>对于字符串 S 和 T，只有在 S = T + … + T（T 与自身连接 1 次或多次）时，我们才认定 “T 能除尽 S”。<br>返回最长字符串 X，要求满足 X 能除尽 str1 且 X 能除尽 str2。<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2>示例1：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：str1 &#x3D; &quot;ABCABC&quot;, str2 &#x3D; &quot;ABC&quot;</span><br><span class="line">输出：&quot;ABC&quot;</span><br></pre></td></tr></table></figure>
-示例2：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：str1 &#x3D; &quot;ABABAB&quot;, str2 &#x3D; &quot;ABAB&quot;</span><br><span class="line">输出：&quot;AB&quot;</span><br></pre></td></tr></table></figure>
-示例 3：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：str1 &#x3D; &quot;LEET&quot;, str2 &#x3D; &quot;CODE&quot;</span><br><span class="line">输出：&quot;&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String gcdOfStrings(String str1, String str2) &#123;</span><br><span class="line">        if(!(str1+str2).equals(str2+str1))</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        return str1.substring(0,gcd(str1.length(), str2.length()));</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;辗转相除法求gcd。</span><br><span class="line">    public int gcd(int a, int b)&#123;</span><br><span class="line">        return a&#x3D;&#x3D;0?b:gcd(b%a, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2></li>
-</ul>
-<ol>
-<li>若s1和s2存在相同的除数X，例s1=XXX, s2=XX, 可见s1+s2=s2+s1</li>
-<li>若s1和s2不存在公共除数，则s1+s2!=s2+s1(反之亦然)。</li>
-<li>再用辗转相除法求两个数的最大公因子<br>对于字符串 S 和 T，只有在 S = T + … + T（T 与自身连接 1 次或多次）时，我们才认定 “T 能除尽 S”。</li>
-</ol>
-<p>原文链接：<a href="https://leetcode-cn.com/problems/greatest-common-divisor-of-strings" target="_blank" rel="noopener">https://leetcode-cn.com/problems/greatest-common-divisor-of-strings</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/12/2020-3-12-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/" data-id="ck7ox8avz0000l0s923f72mzl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -583,6 +588,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/11/2020-4-11-%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD/">鸡蛋掉落</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/10/2020-4-10-%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">翻转字符串里的单词</a>
           </li>
         
@@ -596,10 +605,6 @@
         
           <li>
             <a href="/2020/04/07/2020-4-6-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">编辑距离</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/04/2020-4-4-%E6%8E%A5%E9%9B%A8%E6%B0%B4/">接雨水</a>
           </li>
         
       </ul>
