@@ -64,6 +64,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2020-4-12-交点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/12/2020-4-12-%E4%BA%A4%E7%82%B9/" class="article-date">
+  <time datetime="2020-04-12T09:59:50.000Z" itemprop="datePublished">2020-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/12/2020-4-12-%E4%BA%A4%E7%82%B9/">交点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>数学直角坐标系直线的表示方法</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给定两条线段（表示为起点start = {X1, Y1}和终点end = {X2, Y2}），如果它们有交点，请计算其交点，没有交点则返回空值。</p>
+<p>要求浮点型误差不超过10^-6。若有多个交点（线段重叠）则返回 X 值最小的点，X 坐标相同则返回 Y 值最小的点。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">line1 &#x3D; &#123;0, 0&#125;, &#123;1, 0&#125;</span><br><span class="line">line2 &#x3D; &#123;1, 1&#125;, &#123;0, -1&#125;</span><br><span class="line">输出： &#123;0.5, 0&#125;</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">line1 &#x3D; &#123;0, 0&#125;, &#123;3, 3&#125;</span><br><span class="line">line2 &#x3D; &#123;1, 1&#125;, &#123;2, 2&#125;</span><br><span class="line">输出： &#123;1, 1&#125;</span><br></pre></td></tr></table></figure>
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">line1 &#x3D; &#123;0, 0&#125;, &#123;1, 1&#125;</span><br><span class="line">line2 &#x3D; &#123;1, 0&#125;, &#123;2, 1&#125;</span><br><span class="line">输出： &#123;&#125;，两条线段没有交点</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def intersection(self, start1, end1, start2, end2):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type start1: List[int]</span><br><span class="line">        :type end1: List[int]</span><br><span class="line">        :type start2: List[int]</span><br><span class="line">        :type end2: List[int]</span><br><span class="line">        :rtype: List[float]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if start1[0]&#x3D;&#x3D;end1[0]:</span><br><span class="line">            # 两者均垂直x轴且相交</span><br><span class="line">            if start2[0]&#x3D;&#x3D;end2[0] and start1[0]&#x3D;&#x3D;start2[0] and not(min(start2[1], end2[1])&gt;max(start1[1], end1[1]) or min(start1[1], end1[1])&gt;max(start2[1], end2[1])):</span><br><span class="line">                return start1[0],max(min(start2[1], end2[1]), min(start1[1], end1[1]))</span><br><span class="line">            # 一个垂直，第二个不垂直</span><br><span class="line">            elif start2[0]!&#x3D;end2[0]:</span><br><span class="line">                tempY &#x3D; start2[1]+(end2[1]-start2[1])&#x2F;(end2[0]-start2[0])*(start1[0]-start2[0])</span><br><span class="line">                if max(start1[1], end1[1])&gt;&#x3D;tempY&gt;&#x3D;min(start1[1], end1[1]):</span><br><span class="line">                    return start1[0], tempY</span><br><span class="line">        # 第二个垂直，第一个不垂直</span><br><span class="line">        if start2[0]&#x3D;&#x3D;end2[0] and start1[0]!&#x3D;end1[0]:</span><br><span class="line">            tempY &#x3D; start1[1]+(end1[1]-start1[1])&#x2F;(end1[0]-start1[0])*(start2[0]-start1[0])</span><br><span class="line">            if min(start2[1], end2[1])&lt;&#x3D;tempY&lt;&#x3D;max(start2[1], end2[1]):</span><br><span class="line">                return start2[0], tempY</span><br><span class="line">        # 都不垂直</span><br><span class="line">        if start1[0]!&#x3D;end1[0] and start2[0]!&#x3D;end2[0]:</span><br><span class="line">            k1 &#x3D; (end1[1]-start1[1])&#x2F;(end1[0]-start1[0])</span><br><span class="line">            k2 &#x3D; (end2[1]-start2[1])&#x2F;(end2[0]-start2[0])</span><br><span class="line">            if k1!&#x3D;k2:</span><br><span class="line">                tempX &#x3D; ((start2[1]-k2*start2[0])-(start1[1]-k1*start1[0]))&#x2F;(k1-k2)</span><br><span class="line">                if min(start1[0], end1[0])&lt;&#x3D;tempX&lt;&#x3D;max(start1[0], end1[0]) and min(start2[0], end2[0])&lt;&#x3D;tempX&lt;&#x3D;max(start2[0], end2[0]):</span><br><span class="line">                    return tempX, k1*tempX+start1[1]-k1*start1[0]</span><br><span class="line">            elif k1&#x3D;&#x3D;k2:</span><br><span class="line">                # 如果b相等,则两者是一条直线</span><br><span class="line">                if start2[1]-k2*start2[0]&#x3D;&#x3D;start1[1]-k1*start1[0] and not(min(end2[1], start2[1])&gt;max(end1[1], start1[1]) or max(end2[1], start2[1])&lt;min(end1[1], start1[1])):</span><br><span class="line">                    return max(min(start1[0], end1[0]), min(start2[0], end2[0])), max(min(start1[1], end1[1]), min(start2[1], end2[1])) </span><br><span class="line">        return ()</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>求该交点，使用两点式表示直线，主要分为三种情况：1.两条直线均垂直于X轴，若线段相交，则返回的X值为max(min_L1X, min_L2X),Y为该X值对应的Y值；2.若其中一条直线垂直于X轴，另一条不垂直，则判断两条直线相交点是否在线段的范围内；3.若两条直线均不垂直于X轴，则判断其是否平行，若平行，判断两者y=kx+b中的b是否相等，若相等，判断是否相交返回相交的最小X、Y值，若不平行，则直接返回空。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/12/2020-4-12-%E4%BA%A4%E7%82%B9/" data-id="ck8ww9joi0000kks98mvn06r3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2020-4-11-鸡蛋掉落" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/11/2020-4-11-%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD/" class="article-date">
@@ -518,69 +569,6 @@
 
 
   
-    <article id="post-2020-3-30-圆圈中最后剩下的数字" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-date">
-  <time datetime="2020-03-31T12:11:19.000Z" itemprop="datePublished">2020-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/">圆圈中最后剩下的数字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
-<li>数学知识（约瑟夫环问题）</li>
-</ul>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>0,1,,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
-<p>例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: n &#x3D; 5, m &#x3D; 3</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: n &#x3D; 10, m &#x3D; 17</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public int lastRemaining(int n, int m) &#123;</span><br><span class="line">    int ans &#x3D; 0;</span><br><span class="line">    for (int i&#x3D;2;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">        ans &#x3D; (ans+m)%i;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>第一轮是 [0, 1, 2, 3, 4] ，所以是 [0, 1, 2, 3, 4] 这个数组的多个复制。这一轮 2 删除了。</p>
-<p>第二轮开始时，从 3 开始，所以是 [3, 4, 0, 1] 这个数组的多个复制。这一轮 0 删除了。</p>
-<p>第三轮开始时，从 1 开始，所以是 [1, 3, 4] 这个数组的多个复制。这一轮 4 删除了。</p>
-<p>第四轮开始时，还是从 1 开始，所以是 [1, 3] 这个数组的多个复制。这一轮 1 删除了。</p>
-<p>最后剩下的数字是 3。</p>
-<p>图中的绿色的线指的是新的一轮的开头是怎么指定的，每次都是固定地向前移位 mm 个位置。</p>
-<p>然后我们从最后剩下的 3 倒着看，我们可以反向推出这个数字在之前每个轮次的位置。</p>
-<p>最后剩下的 3 的下标是 0。</p>
-<p>第四轮反推，补上 m 个位置，然后模上当时的数组大小 22，位置是(0 + 3) % 2 = 1。</p>
-<p>第三轮反推，补上 m 个位置，然后模上当时的数组大小 33，位置是(1 + 3) % 3 = 1。</p>
-<p>第二轮反推，补上 m 个位置，然后模上当时的数组大小 44，位置是(1 + 3) % 4 = 0。</p>
-<p>第一轮反推，补上 m 个位置，然后模上当时的数组大小 55，位置是(0 + 3) % 5 = 3。</p>
-<p>所以最终剩下的数字的下标就是3。因为数组是从0开始的，所以最终的答案就是3。</p>
-<p>总结一下反推的过程，就是 (当前index + m) % 上一轮剩余数字的个数。</p>
-<p>原文链接：<a href="https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/31/2020-3-30-%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/" data-id="ck8fxgxqd0001aws9h0bn6bhd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -617,6 +605,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/12/2020-4-12-%E4%BA%A4%E7%82%B9/">交点</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/11/2020-4-11-%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD/">鸡蛋掉落</a>
           </li>
         
@@ -630,10 +622,6 @@
         
           <li>
             <a href="/2020/04/07/2020-4-7-%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/">旋转矩阵</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/07/2020-4-6-%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">编辑距离</a>
           </li>
         
       </ul>
