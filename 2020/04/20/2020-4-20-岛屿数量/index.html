@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>岛屿数量 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="预备知识 图的广度优先遍历BFS  问题给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。 岛屿总是被水包围，并且每座岛屿只能由水平方向和&#x2F;或竖直方向上相邻的陆地连接形成。 此外，你可以假设该网格的四条边均被水包围。 示例示例 1: 123456输入:11110110101100000000输出: 1 示例 2: 1234567输入:11000110000010">
+<meta property="og:type" content="article">
+<meta property="og:title" content="岛屿数量">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/2020-4-20-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="预备知识 图的广度优先遍历BFS  问题给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。 岛屿总是被水包围，并且每座岛屿只能由水平方向和&#x2F;或竖直方向上相邻的陆地连接形成。 此外，你可以假设该网格的四条边均被水包围。 示例示例 1: 123456输入:11110110101100000000输出: 1 示例 2: 1234567输入:11000110000010">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-20T06:37:44.000Z">
+<meta property="article:modified_time" content="2020-04-20T07:36:41.239Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-4-20-岛屿数量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/20/2020-4-20-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" class="article-date">
+  <time datetime="2020-04-20T06:37:44.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      岛屿数量
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li>图的广度优先遍历BFS</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
+<p>岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。</p>
+<p>此外，你可以假设该网格的四条边均被水包围。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">11110</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">00000</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">11000</span><br><span class="line">11000</span><br><span class="line">00100</span><br><span class="line">00011</span><br><span class="line">输出: 3</span><br><span class="line">解释: 每座岛屿只能由水平和&#x2F;或竖直方向上相邻的陆地连接而成。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public int numIslands(char[][] grid) &#123;</span><br><span class="line">    int[] X &#x3D; &#123;0, 1, 0, -1&#125;;</span><br><span class="line">    int[] Y &#x3D; &#123;1, 0, -1, 0&#125;;</span><br><span class="line">    int count &#x3D; 0;</span><br><span class="line">    int[] point;</span><br><span class="line">    int x, y, newX, newY;</span><br><span class="line">    Stack&lt;int[]&gt; stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    for (int i&#x3D;0;i&lt;grid.length;i++)&#123;</span><br><span class="line">        for (int j&#x3D;0;j&lt;grid[0].length;j++)&#123;</span><br><span class="line">            if (grid[i][j]&#x3D;&#x3D;&#39;1&#39;)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                stack.push(new int[]&#123;i, j&#125;);</span><br><span class="line">                grid[i][j] &#x3D; 2;</span><br><span class="line">                while (!stack.isEmpty())&#123;</span><br><span class="line">                    point &#x3D; stack.pop();</span><br><span class="line">                    for (int m&#x3D;0;m&lt;4;m++)&#123;</span><br><span class="line">                        x &#x3D; point[0];</span><br><span class="line">                        y &#x3D; point[1];</span><br><span class="line">                        newX &#x3D; x + X[m];</span><br><span class="line">                        newY &#x3D; y + Y[m];</span><br><span class="line">                        if (newX&gt;&#x3D;0 &amp;&amp; newX&lt;grid.length &amp;&amp; newY&gt;&#x3D;0 &amp;&amp; newY&lt;grid[0].length &amp;&amp; grid[newX][newY]&#x3D;&#x3D;&#39;1&#39;)&#123;</span><br><span class="line">                            stack.push(new int[]&#123;newX, newY&#125;);</span><br><span class="line">                            grid[newX][newY] &#x3D; &#39;2&#39;;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>题意可以理解为，将二维数组看作无向图，查看该无向图的连通图数。采用图的广度优先遍历，分别将一个个联通子图内的状态1改变为其他状态（例如0或者2等等）。最后返回连通图数目</p>
+<p>原文链接：<a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/number-of-islands/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/20/2020-4-20-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" data-id="ck9861tph0000kss908ug0oa7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/18/2020-4-18-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">跳跃游戏</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/20/2020-4-20-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">岛屿数量</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/18/2020-4-18-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/">跳跃游戏</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/16/2020-4-16-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">合并区间</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/2020-4-12-%E4%BA%A4%E7%82%B9/">交点</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/11/2020-4-11-%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD/">鸡蛋掉落</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
